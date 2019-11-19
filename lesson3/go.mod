@@ -12,4 +12,5 @@ require (
 	golang.org/x/sys v0.0.0-20191118133127-cf1e2d577169 // indirect
 	gopkg.in/yaml.v2 v2.2.5 // indirect
 )
-replace golang.org/x/net => github.com/golang/net latest
+
+replace golang.org/x/net => github.com/golang/net v0.0.0-20191118183410-d06c31c94cae
