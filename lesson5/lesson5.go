@@ -23,6 +23,18 @@ func main(){
 }
 
 /*
+	处理带必选参数的路由：
+	/article		no
+	/article/		no
+	/article/id		yes
+	/article/id/	yes	(redirecting request 301: /article/id/ --> /article/id)
+*/
+func NecessaryParams(c *gin.Context){
+	searchBy := c.Param("searchBy")
+	c.String(http.StatusOK, "Necessary=> search article by %s", searchBy)
+}
+
+/*
 	处理带可选参数的路由：
 	/article/id				no
 	/article/id/			yes
@@ -33,18 +45,6 @@ func OptionalParams(c *gin.Context){
 	condition := c.Param("condition")
 	searchBy := c.Param("searchBy")
 	c.String(http.StatusOK, "Optional=> search article by %s = %s",searchBy,condition)
-}
-
-/*
-	处理带必选参数的路由：
-	/article		no
-	/article/		no
-	/article/id		yes
-	/article/id/	yes	(redirecting request 301: /article/id/ --> /article/id)
-*/
-func NecessaryParams(c *gin.Context){
-	searchBy := c.Param("searchBy")
-	c.String(http.StatusOK, "Necessary=> search article by %s", searchBy)
 }
 
 // 处理其他没有定义的路由，自定义404
